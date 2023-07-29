@@ -46,14 +46,15 @@
 </div>
 <div class="text-center">
   {% if extracted_text %}
-  <button type="button" class="btn btn-default" onclick="text_to_speech(document.getElementById('displayed_text').value)">Hear Audio </button>
+  <button type="button" class="btn btn-primary click">Hear Audio </button>
   {% endif %}
+</div>
 </body>
 
 <script>
-  function text_to_speech(text) {
-    speechSynthesis.speak(new SpeechSynthesisUtterance(text));
-  }
+  document.querySelector('.click').addEventListener('click', (e) => {
+    speechSynthesis.speak(new SpeechSynthesisUtterance(document.getElementById('displayed_text').placeholder));
+  });
 </script>
 
 </html>
