@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Upload Image</title>
+  <meta charset="utf-8"
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="jumbotron text-center">
+  <h1>PictuRead</h1>
+  </form>
+</div>
+
+<div class="container">
+  <form method=post enctype=multipart/form-data>
+    <p><input type=file class="form-control" name=file>
+      <br>
+      <input type=submit class="form-control" value=Upload>
+    </form>
+  <h1>Result:</h1>
+  <table class="table table-responsive">
+    <tr>
+      <td>
+        {% if img_src %}
+        <img src="{{ img_src }}" alt="Uploaded image">
+        {% endif %}
+      </td>
+      <td>
+        {% if extracted_text %}
+      <textarea name='displayed_text' rows="15" class="form-control input-lg" placeholder="{{ extracted_text }}" id='displayed_text' readonly></textarea>
+     </p>
+     {% endif %}
+      </td>
+    </tr>
+    <tr>
+        
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="text-center">
+  {% if extracted_text %}
+  <button type="button" class="btn btn-default" onclick="text_to_speech(document.getElementById('displayed_text').value)">Hear Audio </button>
+  {% endif %}
+</body>
+
+<script>
+  function text_to_speech(text) {
+    speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+  }
+</script>
+
+</html>
